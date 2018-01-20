@@ -687,7 +687,7 @@ LIMIT_MAKER
 					}, reconnect);
 					publicRequest(base+'v1/depth', {symbol:symbol, limit:limit}, function(error, json) {
 						if ( error ) { 
-							console.log( 'Request Failed on ' + symbol )
+							console.log( 'Request Failed on ' + symbol );
 						} else if ( messageQueue && typeof messageQueue[symbol] === 'object' ) {
 							info[symbol].firstUpdateId = json.lastUpdateId;
 							depthCache[symbol] = depthData(json);
