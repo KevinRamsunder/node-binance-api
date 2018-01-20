@@ -23,7 +23,7 @@ module.exports = function() {
 	let klineQueue = {};
 	let info = {};
 	let ohlc = {};
-	let options = {recvWindow:60000, reconnect:true, test: false};
+	let options = {recvWindow:75000, reconnect:true, test: false};
 
 	const publicRequest = function(url, data, callback, method = 'GET') {
 		if ( !data ) data = {};
