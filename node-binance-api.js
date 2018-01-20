@@ -686,7 +686,9 @@ LIMIT_MAKER
 						if ( callback ) callback(symbol, depthCache[symbol]);
 					}, reconnect);
 					publicRequest(base+'v1/depth', {symbol:symbol, limit:limit}, function(error, json) {
-						if ( messageQueue && typeof messageQueue[symbol] === 'object' ) {
+						if ( error ) { 
+							console.log( 'Request Failed on ' + symbol )
+						} else if ( messageQueue && typeof messageQueue[symbol] === 'object' ) {
 							info[symbol].firstUpdateId = json.lastUpdateId;
 							depthCache[symbol] = depthData(json);
 							for ( let depth of messageQueue[symbol] ) {
